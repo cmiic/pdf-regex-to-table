@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 
-const basePath = import.meta.env.VITE_SUB || "/pdf-regex-to-table/"
+const basePath = import.meta.env.VITE_SUB || "/pdf-regex-to-table/";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

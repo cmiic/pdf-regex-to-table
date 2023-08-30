@@ -2,7 +2,6 @@
 import MainNav from "./MainNav.vue";
 import { ref } from "vue";
 const menuActive = ref(false);
-
 </script>
 
 <template>
@@ -13,7 +12,6 @@ const menuActive = ref(false);
           <figure class="">
             <a href="#" class="navbar-item">
               <img src="@/assets/logo.svg" alt="Logo" class="logo" />
-              
             </a>
           </figure>
           <a

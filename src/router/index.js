@@ -19,7 +19,7 @@ const router = createRouter({
     },
   ],
   linkActiveClass: "is-active",
-  linkExactActiveClass: "is-active"
+  linkExactActiveClass: "is-active",
 });
 
 export default router;

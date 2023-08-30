@@ -1,15 +1,17 @@
 <script setup>
 import { ref } from "vue";
+import { fileContent } from "../stores/fileContent";
+
 import("pdfjs-dist").then(async (pdfjs) => {
-  await import("pdfjs-dist/build/pdf.worker.entry").then(async (workerSrc) => {
+  import("pdfjs-dist/build/pdf.worker.entry").then(async (workerSrc) => {
     pdfjs.GlobalWorkerOptions.workerSrc = workerSrc.default;
   });
 });
-const pagesText = ref({});
 const fileURL = ref("");
 const fileURLPreview = ref("");
 const handleDrop = (ev) => {
   ev.preventDefault();
+  fileContent.clearFileContentText();
   if (ev.dataTransfer.items) {
     // Use DataTransferItemList interface to access the file(s)
     [...ev.dataTransfer.items].forEach((item, i) => {
@@ -33,12 +35,13 @@ const handleDrop = (ev) => {
                     const item = textItems[i];
                     finalString += item.str + " ";
                   }
-                  pagesText.value[pageNumber] = finalString;
+                  fileContent.addFileContentText(pageNumber, finalString);
                 });
               });
             })(i);
           }
         });
+        return; // after first file
       }
     });
   } else {
@@ -60,9 +63,9 @@ const handleDragOver = (ev) => {
         @drop.prevent="handleDrop"
         @dragover.prevent="handleDragOver"
       >
-        <p>Drop your files here</p>
+        <p>Drop your file here</p>
       </div>
-      <div class="field" v-if="pagesText[1]">
+      <div class="field" v-if="fileContent.text[1]">
         <label class="label" for="pdfTextContent">Extracted text:</label>
         <div class="control">
           <textarea
@@ -70,7 +73,7 @@ const handleDragOver = (ev) => {
             id="pdfTextContent"
             class="textarea is-family-monospace is-size-7"
             readonly
-            >{{ pagesText }}</textarea
+            >{{ fileContent.text }}</textarea
           >
         </div>
       </div>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="./favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="@assets/img/icon-small.png" sizes="201x201">
+  <link rel="apple-touch-icon" href="@assets/img/icon-large.png">
+  <title>Vue with Bulma and PWA stub</title>
+  <script type="module" crossorigin src="./assets/index-8b6348b8.js"></script>
+  <link rel="stylesheet" href="./assets/index-f26b64b9.css">
+</head>
+
+<body class="has-navbar-fixed-top">
+  <div id="app"></div>
+  
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js')
+    }
+  </script>
+</body>
+
+</html>

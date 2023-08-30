@@ -9,12 +9,12 @@
     "orientation": "portrait",
     "icons": [
       {
-        "src": "/vue-pwa-bulma-template/img/icon-large.png",
+        "src": "./img/icon-large.png",
         "sizes": "512x512",
         "type": "image/png"
       },
       {
-        "src": "/vue-pwa-bulma-template/img/icon-small.png",
+        "src": "./img/icon-small.png",
         "sizes": "201x201",
         "type": "image/png"
       }

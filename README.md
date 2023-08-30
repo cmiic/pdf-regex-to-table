@@ -1,5 +1,5 @@
-# vue-pwa-bulma-template
+# pdf-regex-to-table
 
-Currently contains one page using vue-router with basic navigation styled with bulma and a pwa-stub
+## Description
 
-Action for deployment to gh-pages is included (write permissions for actions must be granted)
+Drop a pdf file containing text and this script will output a table of the text and the page number it was found on if you provide a regex pattern.

@@ -18,6 +18,13 @@ module.exports = {
       parserOptions: {
         sourceType: 'script'
       }
+    },
+    {
+      files: ['**/*.html'],
+      rules: {
+        'vue/comment-directive': 'off',
+        'eol-last': 'off'
+      }
     }
   ],
   parserOptions: {

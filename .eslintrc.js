@@ -25,6 +25,12 @@ module.exports = {
         'vue/comment-directive': 'off',
         'eol-last': 'off'
       }
+    },
+    {
+      files: ['FileReader.vue'],
+      rules: {
+        'vue/no-textarea-mustache': 'off'
+      }
     }
   ],
   parserOptions: {

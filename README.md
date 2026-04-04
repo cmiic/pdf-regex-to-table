@@ -21,9 +21,11 @@ and export the results as a table.
 ## Development
 
 ```bash
-npm install
+npm ci --ignore-scripts
 npm run dev
 ```
+
+> **Note**: Install scripts are disabled for security (supply chain attack mitigation).
 
 ### Scripts
 

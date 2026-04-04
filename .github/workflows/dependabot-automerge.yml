@@ -80,14 +80,23 @@ jobs:
             return lockfiles;
           }
 
-          const defaultBranch = 'origin/${{ github.base_ref }}';
+          const baseSha = '${{ github.event.pull_request.base.sha }}';
           const lockfiles = findLockfiles();
           let newDeps = [];
+          let checkFailed = false;
 
           for (const lf of lockfiles) {
             const rel = lf.replace('./', '');
+            let baseContent;
             try {
-              const baseContent = execSync(`git show ${defaultBranch}:${rel}`, { encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'] });
+              baseContent = execSync(`git show ${baseSha}:${rel}`, { encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'] });
+            } catch (e) {
+              // Lockfile might be new in this PR - that's OK
+              console.log(`ℹ️  ${rel}: not in base (new file)`);
+              continue;
+            }
+            
+            try {
               const baseLock = JSON.parse(baseContent);
               const prLock = JSON.parse(fs.readFileSync(lf, 'utf8'));
               const baseDeps = extractDeps(baseLock);
@@ -96,8 +105,14 @@ jobs:
                 if (!baseDeps.has(d)) newDeps.push(`${rel}: ${d}`);
               }
             } catch (e) {
-              console.log(`Skipping ${rel}: ${e.message}`);
+              console.error(`❌ Failed to parse lockfile ${rel}: ${e.message}`);
+              checkFailed = true;
             }
+          }
+
+          if (checkFailed) {
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, 'has_new_deps=error\n');
+            process.exit(1);
           }
 
           if (newDeps.length > 0) {

@@ -8,11 +8,10 @@ on:
 
 permissions:
   contents: write
-  issues: read
   pull-requests: write
 
 jobs:
-  check-aged-prs:
+  automerge:
     runs-on: ubuntu-latest
     steps:
       - uses: cmiic/dependabot-automation/cron@6da55a5ce4f786ac1ec1c84b997b713ce28178c2 # v2.1.0

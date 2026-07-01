@@ -26,7 +26,7 @@
     "eslint-plugin-vue": "10.9.2",
     "globals": "17.7.0",
     "markdownlint-cli2": "0.23.0",
-    "pdfjs-dist": "5.7.284",
+    "pdfjs-dist": "6.1.200",
     "vite": "8.1.2"
   }
 }

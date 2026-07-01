@@ -1,9 +1,18 @@
 {
   "name": "pdf-regex-to-table",
-  "homepage": "https://cmiic.github.io/pdf-regex-to-table/",
   "version": "0.0.0",
   "type": "module",
   "private": true,
+  "homepage": "https://cmiic.github.io/pdf-regex-to-table/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmiic/pdf-regex-to-table.git"
+  },
+  "author": "Christoph Stadlbauer",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
@@ -14,7 +23,7 @@
   },
   "dependencies": {
     "bulma": "1.0.4",
-    "vue": "3.5.38",
+    "vue": "3.5.39",
     "vue-router": "5.1.0",
     "write-excel-file": "4.1.1"
   },
@@ -26,7 +35,7 @@
     "eslint-plugin-vue": "10.9.2",
     "globals": "17.7.0",
     "markdownlint-cli2": "0.23.0",
-    "pdfjs-dist": "5.7.284",
+    "pdfjs-dist": "6.1.200",
     "vite": "8.1.2"
   }
 }
